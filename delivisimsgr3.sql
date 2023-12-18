@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : lun. 18 déc. 2023 à 13:23
+-- Généré le : lun. 18 déc. 2023 à 13:53
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -160,8 +160,6 @@ CREATE TABLE IF NOT EXISTS `user` (
   `id_user` int NOT NULL AUTO_INCREMENT,
   `nom_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `prenom_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-  `mdp_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-  `login_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `id_logement` int NOT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
