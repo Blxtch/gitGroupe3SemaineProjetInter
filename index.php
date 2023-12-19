@@ -1,9 +1,9 @@
 <?php
 
-require 'Modele.php';
+//require 'Modele.php';
 
 try {
-    $logins = getLogin();
+    //$logins = getLogin();
     require 'vueAccueil.php';
 }
 catch (Exception $e) {
