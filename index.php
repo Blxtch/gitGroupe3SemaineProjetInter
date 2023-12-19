@@ -4,9 +4,9 @@
 
 try {
     //$logins = getLogin();
-    require 'vueAccueil.php';
+    require 'view\vueAccueil.php';
 }
 catch (Exception $e) {
     $msgErreur = $e->getMessage();
-    require 'vueErreur.php';
+    require 'view\vueErreur.php';
 }

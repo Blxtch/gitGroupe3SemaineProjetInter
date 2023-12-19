@@ -1,7 +1,7 @@
-<?php require "Modele.php" ?>
+<?php require "modele\Modele.php" ?>
 
 <?php $titre = 'login'; ?>
-        <?php require 'gabarit.php'; ?>
+        <?php require 'miseEnPage\gabarit.php'; ?>
 
         <form method='post'>
             <label for="login">Nom d'utilisateur:</label>
