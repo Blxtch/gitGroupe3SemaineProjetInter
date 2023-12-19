@@ -1,24 +1,18 @@
 <?php
 
 // Renvoie la liste des billets du blog
-function getLogin() {
-    session_start();
-    $bdd = getBdd();
-    $logins = $bdd->prepare('SELECT login_user , mdp_user FROM users; ');
-
-    if $_POST["login"] == $logins{
-        
-    }
-
-    
-  //  $logins->execute(array($id_user));
+//function getLogin() {
+   
+  //  $bdd = getBdd();
+    //$logins = $bdd->prepare('SELECT login_user , mdp_user FROM users; ');
+ //  $logins->execute(array($id_user));
 
    // if ($logins->rowCount() > 0)
     //    return $logins->fetch();  // Accès à la première ligne de résultat
 
   //  else
    //     throw new Exception("Aucun billet ne correspond à l'identifiant '$idUser'");
-}
+//}
 
 // Renvoie les informations sur un billet
 function getRestau() {
