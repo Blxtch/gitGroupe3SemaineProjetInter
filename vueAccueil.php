@@ -1,5 +1,5 @@
 <?php
-include 'Modele.php';
+require 'modele.php';
 $bdd = getBdd();
 ?>
 
@@ -20,7 +20,7 @@ $bdd = getBdd();
     </header>
         <main>
             <?php 
-            $varRestau = $bdd->prepare('SELECT nom_restau , note_restau , id_restau FROM restaurants');
+            $varRestau = $bdd->query('SELECT nom_restau , note_restau , id_restau FROM restaurants');
             $varRestau->execute();
             $varRestau->setFetchMode(PDO::FETCH_ASSOC);
 

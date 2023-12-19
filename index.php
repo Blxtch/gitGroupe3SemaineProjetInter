@@ -1,14 +1,10 @@
 <?php
-
-//require 'Modele.php';
-
+session_start();
 try {
-    //$logins = getLogin();
-    require 'view\vueAccueil.php';
-    $logins = getLogin();
     require 'vueLogin.php';
+    $login = getLogin();
 }
 catch (Exception $e) {
     $msgErreur = $e->getMessage();
-    require 'view\vueErreur.php';
+    require 'vueErreur.php';
 }

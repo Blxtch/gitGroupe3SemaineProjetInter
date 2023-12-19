@@ -1,26 +1,27 @@
 <?php
-
-
 class Modele {
     //à faire absolument mardi soir
-    private function getLogin() {
-        $bdd = getBdd();
-        $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = ".$login" AND mdp_user = ".$mdp" ');
-        if ($result->num_rows == 1) {
-            // Authentification réussie - démarre la session et redirige vers une page sécurisée
-            
-            $_SESSION["authenticated"] = true;
-            
-            header("Location: vueAccueil.php");
-            exit();
-        } 
-        else {
-            // Authentification échouée - affiche un message d'erreur
-            echo "<p>Nom d'utilisateur ou mot de passe incorrect.</p>";
-        }
-    }
+    // private function getLogin($login, $mdp) {
+    //     $bdd = $this->getBdd();
+    //     $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = :login AND mdp_user = :mdp');
+    //     $log->bindParam(':login', $login);
+    //     $log->bindParam(':mdp', $mdp);
+    //     $log->execute();
+    //     $result = $log->fetchColumn();
+    //     if ($result == 1) {
+    //         // Authentification réussie - démarre la session et redirige vers une page sécurisée
+    //         $_SESSION["authenticated"] = true;
+    //         header("Location: view/vueAccueil.php");
+    //         exit();
+    //     } else {
+    //         // Authentification échouée - affiche un message d'erreur
+    //         echo "<p>Nom d'utilisateur ou mot de passe incorrect.</p>";
+    //     }
+    // }
     
-    public function getRestau() {
+    // Rest of the code...
+//}
+    public function getRestau(){
         $bdd = getBdd();
         $restau = $bdd->query('SELECT nom_restau , note_restau FROM restaurants;');
         return  $restau;
@@ -71,11 +72,10 @@ class Modele {
 
         return $listEntreeDessert;
     }
-
-    public function getBdd() {
-        $bdd = new PDO('mysql:host=localhost;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        return $bdd;
-    }
+    
 
 }
-?>
+function getBdd() {
+    $bdd = new PDO('mysql:host=localhost;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+    return $bdd;
+}

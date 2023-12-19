@@ -1,7 +1,7 @@
 <?php require 'gabarit.php' ?>
 
 <h2>Login</h2>
-    <form action="login.php" method="post">
+    <form action="vueAccueil.php" method="post">
         <label for="login">Nom d'utilisateur:</label>
         <input type="text" id="login" name="login" required>
         <br>
