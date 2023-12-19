@@ -1,10 +1,10 @@
 <?php
 
-require 'Modele.php';
+//require 'Modele.php';
 
 try {
     $logins = getLogin();
-    require 'vueLogin.php';
+    require 'vueAccueil.php';
 }
 catch (Exception $e) {
     $msgErreur = $e->getMessage();
