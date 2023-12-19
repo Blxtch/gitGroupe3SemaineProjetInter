@@ -1,9 +1,13 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <<<<<<< HEAD:view/vuePanier
 <?php require 'miseEnPage\gabarit.php' ?>
 =======
 <?php require "Modele.php" ?>
 >>>>>>> 58f5bae (advancement):vueAccueil.php
+=======
+<?php require 'miseEnPage\gabarit.php' ?>
+>>>>>>> 1000b6b (commit_merge première conversionModeleEnObjet)
 =======
 <?php require 'miseEnPage\gabarit.php' ?>
 >>>>>>> 1000b6b (commit_merge première conversionModeleEnObjet)
@@ -13,6 +17,7 @@
 
         <form method='post'>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <label for="login">Nom d'utilisateur:</label>
             <input type="text" id="login" name="login" required>
             <br>
@@ -21,11 +26,16 @@
             <br>
             <input type="submit" value="Login">
 =======
+=======
+>>>>>>> 1000b6b (commit_merge première conversionModeleEnObjet)
             <label for='login'>Nom utilisateur: </label>
             <input type="text" id="login" name="login"/>
             <label for='password'>Mot de passe: </label>
             <input type="password" id='password' name='password'/>
             <input type="submit">
+<<<<<<< HEAD
+>>>>>>> 1000b6b (commit_merge première conversionModeleEnObjet)
+=======
 >>>>>>> 1000b6b (commit_merge première conversionModeleEnObjet)
         </div>
     </div>
