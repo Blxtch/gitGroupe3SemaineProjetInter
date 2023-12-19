@@ -2,10 +2,23 @@
 
 
 class Modele {
-    private function getlogin(){
-        require 'vueLogin.php';
+    function getLogin() {
         $bdd = getBdd();
+        $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = ".$login" AND mdp_user = ".$mdp" ');
+        if ($result->num_rows == 1) {
+            // Authentification réussie - démarre la session et redirige vers une page sécurisée
+            
+            $_SESSION["authenticated"] = true;
+            
+            header("Location: vueAccueil.php");
+            exit();
+        } 
+        else {
+            // Authentification échouée - affiche un message d'erreur
+            echo "<p>Nom d'utilisateur ou mot de passe incorrect.</p>";
+        }
     }
+    
     public function getRestau() {
         $bdd = getBdd();
         $restau = $bdd->query('SELECT nom_restau , note_restau FROM restaurants;');
