@@ -1,0 +1,12 @@
+
+<?php
+//test pas regarder null
+include 'config.php';
+
+$ldapServer = $config['host'];
+$ldapPort = $config['port'];
+$ldapUser = $config['user'];
+$ldapPassword = $config['password'];
+
+
+?>
