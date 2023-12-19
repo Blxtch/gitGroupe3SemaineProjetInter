@@ -2,7 +2,8 @@
 
 
 class Modele {
-    function getLogin() {
+    //à faire absolument mardi soir
+    private function getLogin() {
         $bdd = getBdd();
         $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = ".$login" AND mdp_user = ".$mdp" ');
         if ($result->num_rows == 1) {
