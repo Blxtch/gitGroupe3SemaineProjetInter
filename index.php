@@ -1,8 +1,12 @@
 <?php
 
-// Contrôleur frontal : instancie un routeur pour traiter la requête entrante
+require 'Modele.php';
 
-require 'Framework/Routeur.php';
-
-$routeur = new Routeur();
-$routeur->routerRequete();
+try {
+    $billets = getBillets();
+    require 'vueAccueil.php';
+}
+catch (Exception $e) {
+    $msgErreur = $e->getMessage();
+    require 'vueErreur.php';
+}
