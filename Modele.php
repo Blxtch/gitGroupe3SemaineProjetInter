@@ -2,8 +2,13 @@
 
 // Renvoie la liste des billets du blog
 function getLogin() {
+    session_start();
     $bdd = getBdd();
-    $logins = $bdd->prepare('SELECT login_user , mdp_user FROM users WHERE id_user = 1;');
+    $logins = $bdd->prepare('SELECT login_user , mdp_user FROM users; ');
+
+    if $_POST["login"] == $logins{
+        
+    }
 
     
   //  $logins->execute(array($id_user));
@@ -56,7 +61,7 @@ function getEntreePlat() {
 
 function getPlatDessert() {
     $bdd = getBdd();
-    $listPlatDessert = $bdd->prepare('SELECT nom_plat , type_plat , prix_plat from plats 
+    $listPlatDessert = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats 
                                     where id_restau = 1 AND type_plat = "Plat" OR type_plat = "Dessert";');
    // $listPlatDessert->execute(array($id_restau));
    // return $listPlatDessert;
@@ -64,7 +69,7 @@ function getPlatDessert() {
 
 function getEntreeDessert() {
     $bdd = getBdd();
-    $listEntreeDessert = $bdd->prepare('SELECT nom_plat , type_plat , prix_plat from plats 
+    $listEntreeDessert = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats 
                                     where id_restau = 1 AND type_plat = "entree" OR type_plat = "Dessert";');
    // $listEntreeDessert->execute(array($id_restau));
    // return $listEntreeDessert;

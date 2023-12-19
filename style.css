@@ -36,3 +36,15 @@ h1 {
 #titreReponses {
     font-size : 100%;
 }
+
+#form {
+    display:grid;
+    grid-template-rows: 3;
+    align-items: center;
+    width: 5%;
+    justify-items: center;
+}
+
+.login .pswd {
+    margin: 5px;
+}
