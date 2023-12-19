@@ -25,7 +25,6 @@ if ($ldapConn) {
 } else {
     echo 'Échec de la connexion LDAP';
 }
-?>
 
 
 
