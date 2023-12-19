@@ -8,20 +8,17 @@ $message = '';
 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $username = $_POST['username'];
-    $temp = password_hash($_POST['password'], PASSWORD_DEFAULT);
+    $temp = hash('sha256', $_POST['password']);
     $password = $temp;
-
-    echo $password;
 
     $sql = $bdd->prepare("SELECT * FROM users WHERE login_user = :username");
     $sql->execute(['username' => $username]);
     $user = $sql->fetch();
 
-    $mdp_user = password_hach($user['mdp_user'], PASSWORD_DEFAULT);
+    
+    $mdp_user = hash('sha256', $user['mdp_user']);
 
-    echo $mdp_user;
-
-    if ($user && password_verify($password, $mdp_user)) {
+    if ($user && $password == $mdp_user) {
         session_start();
         $_SESSION['id'] = $user['id_user'];
         header('Location: vueAccueil.php');
