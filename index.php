@@ -7,7 +7,7 @@ session_start();
 
 try {
     require 'vueLogin.php';
-    $login = $Modele_en_Session->getLogin($login,$mdp);
+    $login = getLogin();
 }
 catch (Exception $e) {
     $msgErreur = $e->getMessage();
