@@ -11,4 +11,4 @@
 <header>
 
 </header>
-<?php require 'gabarit.php'; ?>
+<?php require 'miseEnPage\gabarit.php'; ?>
