@@ -1,10 +1,11 @@
 <?php
+session_start();
+require 'Modele.php';
 
-//require 'Modele.php';
 
 try {
-    $logins = getLogin();
     require 'vueLogin.php';
+    $login = getLogin();
 }
 catch (Exception $e) {
     $msgErreur = $e->getMessage();

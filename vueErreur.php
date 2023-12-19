@@ -1,4 +1,4 @@
-<?php $titre = 'Mon Blog'; ?>
+<?php $titre = 'ERROR'; ?>
 
 <?php ob_start() ?>
 <p>Une erreur est survenue : <?= $msgErreur ?></p>

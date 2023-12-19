@@ -18,7 +18,3 @@ $configLDAP = [
 $mode = 'local'; 
 
 $config = ($mode === 'ldap') ? $configLDAP : $configLocal;
-
-
-
-?>
