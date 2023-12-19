@@ -7,8 +7,8 @@ try {
         // intval renvoie la valeur numérique du paramètre ou 0 en cas d'échec
         $id = intval($_GET['id']);
         if ($id != 0) {
-            $billet = getBillet($id);
-            $commentaires = getCommentaires($id);
+            $logins = getLogin($id);
+            $restau = getRestau($id);
             require 'vueBillet.php';
         }
         else

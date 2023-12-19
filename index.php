@@ -3,7 +3,7 @@
 require 'Modele.php';
 
 try {
-    $billets = getBillets();
+    $logins = getLogin();
     require 'vueAccueil.php';
 }
 catch (Exception $e) {

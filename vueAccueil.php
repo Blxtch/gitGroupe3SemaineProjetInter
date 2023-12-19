@@ -1,18 +1,6 @@
-<?php $titre = 'Mon Blog'; ?>
-
-<?php ob_start(); ?>
-<?php foreach ($billets as $billet): ?>
-    <article>
-        <header>
-            <a href="<?= "billet.php?id=" . $billet['id'] ?>">
-                <h1 class="titreBillet"><?= $billet['titre'] ?></h1>
-            </a>
-            <time><?= $billet['date'] ?></time>
-        </header>
-        <p><?= $billet['contenu'] ?></p>
-    </article>
-    <hr />
-<?php endforeach; ?>
-<?php $contenu = ob_get_clean(); ?>
-
-<?php require 'gabarit.php'; ?>
+<?php $titre = 'login'; ?>
+        <?php require 'gabarit.php'; ?>
+        <input type="text" id="login" name="login"/>
+        <input type="password" id='password' name='password'/>
+        <input type="submit">
+        

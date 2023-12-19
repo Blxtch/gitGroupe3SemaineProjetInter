@@ -6,16 +6,13 @@
         <title><?= $titre ?></title>
     </head>
     <body>
-        <div id="global">
+        <div class="global">
             <header>
-                <a href="index.php"><h1 id="DelivISIM">DelivISIM</h1></a>
-                <p>Je vous souhaite la bienvenue sur ce modeste blog.</p>
+                <a href="index.php"><h1 id="DelivISIM - LOGIN">DelivISIM - LOGIN </h1></a>
+                <?php require 'vueAccueil' ;?>
             </header>
-            <div id="contenu">
-                <?= $contenu ?>
-            </div> <!-- #contenu -->
             <footer id="piedBlog">
-                Blog réalisé avec PHP, HTML5 et CSS.
+                - Projet réalisé par le Groupe 3 HEH
             </footer>
         </div> <!-- #global -->
     </body>
