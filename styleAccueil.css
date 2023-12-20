@@ -1,0 +1,38 @@
+html{
+    margin:0;
+    padding: 0;
+}
+
+header{
+    background-color: green;
+    margin: 0;
+}
+
+header img{
+    width : 10%;
+}
+
+main{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+
+.restau{
+    max-width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    padding: 20px 30px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+a{
+    text-decoration: none;
+    color: #000000;
+}
+
+a:hover{
+    text-decoration: none;
+    color: green;
+}
