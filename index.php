@@ -6,6 +6,10 @@ $db -> getInstance();
 session_start();
 
 
+
+
+//géer avec des variables de session
+
 //include 'vues/vueAccueil.php';
 
 // if(!isset($_SESSION['id'])){
