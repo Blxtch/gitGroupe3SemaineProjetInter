@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accueil</title>
+    <title>Plats</title>
     <link rel= "stylesheet" href="../css/stylePlats.css">
 </head>
 <body>
@@ -15,13 +15,20 @@
 
             $varPlats = $db->accessListePlats();
 
-            while ($data = $varPlats->fetch()) {
-                echo '<h2>',$data['nom_plat'],'</h2>';
-                echo '<p>',$data['type_plat'],'</p>';
-                echo '<p>',$data['prix_plat']. '€','</p>';
-                echo '</div></a>';
+            if ($varPlats !== null) {
+                while ($data = $varPlats->fetch()) {
+                    echo '<a href="">','<div class="plat">';
+                    echo '<h2>',$data['nom_plat'],'</h2>';
+                    echo '<p>',$data['type_plat'],'</p>';
+                    echo '<p>',$data['prix_plat']. '€','</p>';
+                    echo '<form action="vuePlats.php?id_restau='.$data['id_restau'], 'method="post">';
+                    echo '<input type="submit" value="Ajouter au panier">';
+                    echo '</form>';
+                    echo '</div></a>';
+                }
             }
             ?>
+                
         </main>
 
     <?php include_once '../gabarits/footer.php'; ?>
