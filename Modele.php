@@ -1,4 +1,5 @@
 <?php
+
 class Modele {
 
     private function getBdd() {
@@ -9,7 +10,7 @@ class Modele {
     public function getInstance() {
         return $this->getBdd();
     }
-//fonctionnel mais utilisable ailleur
+    //fonctionnel mais utilisable autre pars
     public function getLogin($login, $mdp) {
         $bdd = $this->getBdd();
         $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = :login AND mdp_user = :mdp');
@@ -21,7 +22,7 @@ class Modele {
         if ($result == 1) {
             //Hop Hop on envoie l'accueil
             $_SESSION["authenticated"] = true;
-            header("Location: view/vueAccueil.php");
+            //header("Location: view/vueAccueil.php");
             exit();
         } else {
            
@@ -29,11 +30,12 @@ class Modele {
         }
     }
 
+   
     public function getRestau(){
-        $bdd = getBdd();
-        $restau = $bdd->query('SELECT nom_restau , note_restau FROM restaurants;');
-        return  $restau;
-    }
+        $bdd = $this->getBdd(); // Correction ici
+        $restau = $bdd->query('SELECT nom_restau, note_restau FROM restaurants;');
+        return $restau;
+}
 
 
     public function getPlats() {
@@ -83,4 +85,6 @@ class Modele {
     
 
 }
+
+
 
