@@ -1,5 +1,7 @@
-<?php require_once '../index.php';
-require_once '../db.php';
+<?php //require_once '../index.php';
+
+$_POST['username'] = '';
+$_POST['password'] = '';
 
 if (isset($_SESSION['id'])) {
     session_destroy();
@@ -43,8 +45,12 @@ if (isset($_SESSION['id'])) {
     </body>
     </html>
 
+<<<<<<< HEAD
 <?php 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $db->accessLogin($_POST['username'], $_POST['password']);
 }
 ?>
+=======
+<?php //$db->accessLogin($_POST['username'], $_POST['password']);" ?>
+>>>>>>> a2218aa (branche de debug)

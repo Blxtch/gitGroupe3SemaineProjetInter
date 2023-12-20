@@ -6,6 +6,15 @@ class Modele {
         $bdd = new PDO('mysql:host=localhost;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         return $bdd;
     }
+
+    // private function pour obtenir les logins 
+    private function getLogin($username, $password) {
+        $bdd = $this->getBdd();
+        $sql = $bdd->prepare("SELECT * FROM users WHERE login_user = :username");
+        $sql->execute(['username' => $username]);
+        $user = $sql->fetch();
+        return $user;
+    }
         
     private function checkLogin() {
         if (isset($_POST['username']) && isset($_POST['password'])) {

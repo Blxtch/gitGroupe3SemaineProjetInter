@@ -1,4 +1,4 @@
-<?php require '../index.php'; ?>
+<?php //require '../index.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
