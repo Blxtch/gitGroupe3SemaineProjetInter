@@ -34,6 +34,5 @@ if ($bind) {
     $msg = "Invalid email address / password";
     echo $msg;
 }
-?>
 
 
