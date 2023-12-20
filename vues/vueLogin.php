@@ -1,4 +1,5 @@
-<?php require_once '../index.php';
+<?php //require_once '../index.php';
+
 $_POST['username'] = '';
 $_POST['password'] = '';
 
@@ -40,4 +41,4 @@ $_POST['password'] = '';
     </body>
     </html>
 
-<?php $db->accessLogin($_POST['username'], $_POST['password']); ?>
+<?php //$db->accessLogin($_POST['username'], $_POST['password']);" ?>

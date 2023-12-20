@@ -1,33 +1,43 @@
 <?php
 require_once 'modele.php';
 $db = new Modele;
-$db -> getInstance();
-
+$db->getInstance();
 session_start();
 
+if (!isset($_SESSION['id'])) {
+    // Debugging
+    echo 'youhou';
+    //header('Location: vues/vueLogin.php');
+    //exit; //je dois faire ca jsp 
+} 
 
+else {
+    echo 'hnouais';
+    //header('Location: vues/vueErreur.php');
+   // exit;
+}
 
+if (isset($_POST['login']) && isset($_POST['mdp'])) {
+    $login = $_POST['login'];
+    $mdp = $_POST['mdp'];
+    
+    // Debugging
+    echo ' login...';
 
-//géer avec des variables de
+    $db->accessLogin($login, $mdp);
 
-//include 'vues/vueAccueil.php';
+    // Debugging
+    echo 'After login ';
 
-// if(!isset($_SESSION['id'])){
-//     header('Location: vues/vueLogin.php');
-//     if (isset($SESSION['id'])){
-//         header('Location: vues/vueAccueil.php');
-//     }
-// else {
-//     header('Location: vues/vueErreur.php');
-// }
-// }
+   // header('Location: vues/vueAccueil.php');
+   // exit;
+} 
 
-//     if (isset($_POST['login']) && isset($_POST['mdp'])) {
-//         $login = $_POST['login'];
-//         $mdp = $_POST['mdp'];
-//         $db->getLogin($login, $mdp);
-//         header('Location: vueAccueil.php');
-//     }
-//     else {
-//         header('Location: vueErreur.php');
-//     }
+else {
+    // Debugging
+    echo 'haaaaaaaaaaaaaaaaaaaaaaaaaaan';
+
+   // header('Location: vues/vueLogin.php');
+    //exit;
+}
+

@@ -7,7 +7,7 @@ class Modele {
         return $bdd;
     }
 
-    // private function pour obtenir les logins {
+    // private function pour obtenir les logins 
     private function getLogin($username, $password) {
         $bdd = $this->getBdd();
         $sql = $bdd->prepare("SELECT * FROM users WHERE login_user = :username");
