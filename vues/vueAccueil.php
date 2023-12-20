@@ -1,13 +1,15 @@
+<?php include '..\index.php'; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accueil</title>
-    <link rel= "stylesheet" href="css/styleAccueil.css">
+    <link rel= "stylesheet" href="../css/styleAccueil.css">
 </head>
 <body>
-    <?php include_once '../gabarit/header.php'; ?>
+    <?php include_once '../gabarits/header.php'; ?>
         <main>
             <?php 
             
@@ -24,7 +26,7 @@
             ?>
         </main>
 
-    <?php include_once '../gabarit/footer.php'; ?>
+    <?php include_once '../gabarits/footer.php'; ?>
 </body>
 </html>
 
