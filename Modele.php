@@ -75,6 +75,24 @@ class Modele {
         return $varPlat;
     }
 
+    private function addRestau(){
+        $bdd = $this->getBdd();
+        if (isset($_POST['ok']))
+        {
+            $nom_restau = $_POST['nom_restau'];
+            $type_restau = $_POST['type_restau'];
+            $note_restau = $_POST['note_restau'];
+            $descritpio = $_POST['descritpio'];
+            $modif = $bd->prepare('INSERT users SET nom_restau = :nom_restau, type_restau = :type_restau, note_restau = :note_restau descriptio = :descriptio');
+            $modif->bindParam(':nom_restau', $nom_restau);
+            $modif->bindParam(':type_restau', $type_restau);
+            $modif->bindParam(':note_restau', $note_restau);
+            $modif->bindParam(':descriptio', $descritpio);
+            $modif->execute();
+            header('Location: vues/vueDashboard.php');
+        }
+    }
+
     public function getEntree() {
         $bdd = $this->getBdd();
         $listEntree = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats
@@ -132,4 +150,9 @@ public function accessListePlats() {
     return $this->getListeEntreesPlatsDesserts();
 
 }
+
+public function accessModifRestau() {
+    return $this->addRestau();
+}
+
 }

@@ -1,4 +1,5 @@
 <?php 
+include_once '../index.php';
     //fetch le niveau d'accès du user
     //ensuite dans un if gérer l'affichage
 
@@ -18,10 +19,17 @@
     <link rel= "stylesheet" href="../css/stylePlats.css">
 </head>
 <body>
-    <div>
-        <form action="vueAccueil.php" method="post">
-        <label for="page" >PageAccueil</label>
-        <input type="submit" value="PageAccueil">
-    </div>
+    <?php include_once '../gabarits/header.php';
+        $modif = $db -> accessListePlats();
+        echo '<div id="modif">';
+        echo '<form action="vueDashboard.php" method="post">';
+        echo '<p> Nom: ', '<input type = "text" name="nom_restau">';
+        echo '<p> type: ', '<input type = "text" name="type_restau">';
+        echo '<p> Note: ', '<input type = "number" name="note_restau">';
+        echo '<p> Description: ', '<input type = "textarea" name="descriptio">';
+        echo '<p> <input type="submit" value="Envoyer" name="ok" ></p>';
+        echo '</form>';
+    include_once '../gabarits/footer.php';
+    ?>
 </body>
 
