@@ -56,12 +56,15 @@ class Modele {
 
     private function getListeEntreesPlatsDesserts() {
         $bdd = $this->getBdd();
-        $id_restau = $_GET['id_restau'];
-        $varPlat = $bdd->query('SELECT nom_plat , prix_plat , id_plat, type_plat FROM plats WHERE id_restau = :id_restau');
-        $varPlat->execute();
+        $varPlat = $bdd->prepare('SELECT nom_plat , prix_plat , id_plat, type_plat, id_restau FROM plats WHERE id_restau = :id_restau');
+        if(isset($_GET['id_restau'])){
+            $id_restau = $_GET['id_restau'];
+            $varPlat->bindParam(':id_restau', $id_restau);
+            $varPlat->execute();
         $varPlat->setFetchMode(PDO::FETCH_ASSOC);
         return $varPlat;
     }
+}
 
     private function getListePlats(){
         $bdd = $this->getBdd();
