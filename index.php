@@ -6,7 +6,7 @@ $db -> getInstance();
 session_start();
 
 
-
+//variable session panier  -> list
 
 //géer avec des variables de session
 

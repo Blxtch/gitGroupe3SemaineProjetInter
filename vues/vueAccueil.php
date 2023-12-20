@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-<?php require '../index.php'; ?>
-=======
 <?php include '..\index.php'; ?>
->>>>>>> ce652bd0e4ab636eeb40492e054acf2fad9a6f4a
 
 <!DOCTYPE html>
 <html lang="fr">
