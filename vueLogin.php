@@ -27,6 +27,7 @@
     }
     ?>
 
+<<<<<<< HEAD
     <!DOCTYPE html>
     <html lang="fr">
     <head>
@@ -93,6 +94,19 @@
     </style>
     </head>
     <body>
+=======
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion</title>
+    <link rel= "stylesheet" href="styleLogin.css">
+</head>
+<body>
+<div class="login-container">
+    <h2>Connexion</h2>
+>>>>>>> e66fbf6c94abf86e7b5a48d0ed9063a909330037
 
     <div class="login-container">
         <h2>Connexion</h2>
