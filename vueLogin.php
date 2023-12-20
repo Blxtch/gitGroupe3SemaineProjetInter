@@ -1,8 +1,7 @@
     <?php
 
-    require_once "index.php";
-
-
+    require_once 'index.php';
+    
     $message = '';
 
     if (isset($_POST['username']) && isset($_POST['password'])) {
@@ -10,15 +9,12 @@
         $temp = hash('sha256', $_POST['password']);
         $password = $temp;
 
-        $sql = $db->prepare("SELECT * FROM users WHERE login_user = :username");
-        $sql->execute(['username' => $username]);
-        $user = $sql->fetch();
-
+       
         
-        $mdp_user = hash('sha256', $user['mdp_user']);
+        
 
         if ($user && $password == $mdp_user) {
-            session_start();
+           
             $_SESSION['id'] = $user['id_user'];
             header('Location: vueAccueil.php');
         } else {

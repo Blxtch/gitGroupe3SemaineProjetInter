@@ -11,7 +11,7 @@ class Modele {
         return $this->getBdd();
     }
     //fonctionnel mais utilisable autre pars
-    public function getLogin($login, $mdp) {
+    private function getLogin($login, $mdp) {
         $bdd = $this->getBdd();
         $log = $bdd->prepare('SELECT COUNT(*) FROM users WHERE login_user = :login AND mdp_user = :mdp');
         $log->bindParam(':login', $login);
@@ -83,7 +83,7 @@ class Modele {
         return $listEntreeDessert;
     }
     
-
+    
 }
 
 

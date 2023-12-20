@@ -1,6 +1,12 @@
-
+ 
 <?php
-require_once 'index.php';
+
+if ( !isset($_SESSION['id']) ) {
+    header('Location: vueLogin.php');
+    exit();
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -11,14 +17,11 @@ require_once 'index.php';
     <link rel= "stylesheet" href="styleAccueil.css">
 </head>
 <body>
+
     <?php include 'header.php'; ?>
         <main>
             <?php 
-<<<<<<< HEAD
-            $varRestau = $db->query('SELECT nom_restau , note_restau , id_restau FROM restaurants');
-=======
             $varRestau = $bdd->query('SELECT nom_restau , note_restau , id_restau, descriptio , type_restau  FROM restaurants');
->>>>>>> e66fbf6c94abf86e7b5a48d0ed9063a909330037
             $varRestau->execute();
             $varRestau->setFetchMode(PDO::FETCH_ASSOC);
 
