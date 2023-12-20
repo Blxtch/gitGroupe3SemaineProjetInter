@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Dec 19, 2023 at 08:40 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mer. 20 déc. 2023 à 13:47
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,25 +18,27 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `dbsemaineprojetdef`
+-- Base de données : `dbsemaineprojetdef`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `billets`
+-- Structure de la table `billets`
 --
 
-CREATE TABLE `billets` (
-  `id_billet` int NOT NULL,
+DROP TABLE IF EXISTS `billets`;
+CREATE TABLE IF NOT EXISTS `billets` (
+  `id_billet` int NOT NULL AUTO_INCREMENT,
   `commentaire` text CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `note_5` int NOT NULL,
   `id_user` int NOT NULL,
-  `id_restau` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_restau` int NOT NULL,
+  PRIMARY KEY (`id_billet`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `billets`
+-- Déchargement des données de la table `billets`
 --
 
 INSERT INTO `billets` (`id_billet`, `commentaire`, `note_5`, `id_user`, `id_restau`) VALUES
@@ -47,34 +49,38 @@ INSERT INTO `billets` (`id_billet`, `commentaire`, `note_5`, `id_user`, `id_rest
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chat_box`
+-- Structure de la table `chat_box`
 --
 
-CREATE TABLE `chat_box` (
-  `id_chat` int NOT NULL,
+DROP TABLE IF EXISTS `chat_box`;
+CREATE TABLE IF NOT EXISTS `chat_box` (
+  `id_chat` int NOT NULL AUTO_INCREMENT,
   `id_message` int NOT NULL,
   `message` text CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
-  `id_user` int NOT NULL
+  `id_user` int NOT NULL,
+  PRIMARY KEY (`id_chat`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `commandes`
+-- Structure de la table `commandes`
 --
 
-CREATE TABLE `commandes` (
-  `num_commande` int NOT NULL,
+DROP TABLE IF EXISTS `commandes`;
+CREATE TABLE IF NOT EXISTS `commandes` (
+  `num_commande` int NOT NULL AUTO_INCREMENT,
   `etat_commande` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `commande_accepte` tinyint(1) NOT NULL,
   `id_logement` int NOT NULL,
   `id_restau` int NOT NULL,
   `id_plat` int NOT NULL,
-  `id_user` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_user` int NOT NULL,
+  PRIMARY KEY (`num_commande`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `commandes`
+-- Déchargement des données de la table `commandes`
 --
 
 INSERT INTO `commandes` (`num_commande`, `etat_commande`, `commande_accepte`, `id_logement`, `id_restau`, `id_plat`, `id_user`) VALUES
@@ -87,18 +93,20 @@ INSERT INTO `commandes` (`num_commande`, `etat_commande`, `commande_accepte`, `i
 -- --------------------------------------------------------
 
 --
--- Table structure for table `logement`
+-- Structure de la table `logement`
 --
 
-CREATE TABLE `logement` (
-  `id_logement` int NOT NULL,
+DROP TABLE IF EXISTS `logement`;
+CREATE TABLE IF NOT EXISTS `logement` (
+  `id_logement` int NOT NULL AUTO_INCREMENT,
   `nom_logement` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `prix_logement` int NOT NULL,
-  `id_user` int NOT NULL COMMENT 'clé primaire user'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_user` int NOT NULL COMMENT 'clé primaire user',
+  PRIMARY KEY (`id_logement`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `logement`
+-- Déchargement des données de la table `logement`
 --
 
 INSERT INTO `logement` (`id_logement`, `nom_logement`, `prix_logement`, `id_user`) VALUES
@@ -109,17 +117,19 @@ INSERT INTO `logement` (`id_logement`, `nom_logement`, `prix_logement`, `id_user
 -- --------------------------------------------------------
 
 --
--- Table structure for table `message`
+-- Structure de la table `message`
 --
 
-CREATE TABLE `message` (
-  `id_message` int NOT NULL,
+DROP TABLE IF EXISTS `message`;
+CREATE TABLE IF NOT EXISTS `message` (
+  `id_message` int NOT NULL AUTO_INCREMENT,
   `message` text NOT NULL,
-  `id_user` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_user` int NOT NULL,
+  PRIMARY KEY (`id_message`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `message`
+-- Déchargement des données de la table `message`
 --
 
 INSERT INTO `message` (`id_message`, `message`, `id_user`) VALUES
@@ -131,20 +141,22 @@ INSERT INTO `message` (`id_message`, `message`, `id_user`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `panier`
+-- Structure de la table `panier`
 --
 
-CREATE TABLE `panier` (
-  `id_panier` int NOT NULL,
+DROP TABLE IF EXISTS `panier`;
+CREATE TABLE IF NOT EXISTS `panier` (
+  `id_panier` int NOT NULL AUTO_INCREMENT,
   `id_plat` int NOT NULL,
   `id_user` int NOT NULL,
   `id_restau` int NOT NULL,
   `prix_plat` int NOT NULL,
-  `total_prix` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `total_prix` int NOT NULL,
+  PRIMARY KEY (`id_panier`)
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `panier`
+-- Déchargement des données de la table `panier`
 --
 
 INSERT INTO `panier` (`id_panier`, `id_plat`, `id_user`, `id_restau`, `prix_plat`, `total_prix`) VALUES
@@ -153,19 +165,21 @@ INSERT INTO `panier` (`id_panier`, `id_plat`, `id_user`, `id_restau`, `prix_plat
 -- --------------------------------------------------------
 
 --
--- Table structure for table `plats`
+-- Structure de la table `plats`
 --
 
-CREATE TABLE `plats` (
-  `id_plat` int NOT NULL,
+DROP TABLE IF EXISTS `plats`;
+CREATE TABLE IF NOT EXISTS `plats` (
+  `id_plat` int NOT NULL AUTO_INCREMENT,
   `nom_plat` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `type_plat` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `prix_plat` float NOT NULL,
-  `id_restau` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `id_restau` int NOT NULL,
+  PRIMARY KEY (`id_plat`)
+) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `plats`
+-- Déchargement des données de la table `plats`
 --
 
 INSERT INTO `plats` (`id_plat`, `nom_plat`, `type_plat`, `prix_plat`, `id_restau`) VALUES
@@ -179,170 +193,61 @@ INSERT INTO `plats` (`id_plat`, `nom_plat`, `type_plat`, `prix_plat`, `id_restau
 -- --------------------------------------------------------
 
 --
--- Table structure for table `restaurants`
+-- Structure de la table `restaurants`
 --
 
-CREATE TABLE `restaurants` (
-  `id_restau` int NOT NULL,
+DROP TABLE IF EXISTS `restaurants`;
+CREATE TABLE IF NOT EXISTS `restaurants` (
+  `id_restau` int NOT NULL AUTO_INCREMENT,
   `nom_restau` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `type_restau` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `note_restau` int NOT NULL COMMENT 'étoile de 1 à 5',
   `nbr_vente_j` int NOT NULL,
   `nbr_vente_s` int NOT NULL,
   `nbr_vente_m` int NOT NULL,
-  `nbr_j` int NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `nbr_j` int NOT NULL,
+  `ouverture_h` int NOT NULL,
+  `ouverture_m` int NOT NULL,
+  `Descriptio` text CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
+  PRIMARY KEY (`id_restau`)
+) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `restaurants`
+-- Déchargement des données de la table `restaurants`
 --
 
-INSERT INTO `restaurants` (`id_restau`, `nom_restau`, `type_restau`, `note_restau`, `nbr_vente_j`, `nbr_vente_s`, `nbr_vente_m`, `nbr_j`) VALUES
-(1, 'Chez Luigi', 'Italien', 5, 1, 4, 5, 27),
-(2, 'Chez Ying', 'Chinois', 5, 2, 4, 6, 27),
-(3, 'Palais de jade', 'Chinois', 5, 2, 10, 10000, 25),
-(4, 'La tour eiffel', 'Francais', 5, 2, 10, 10000, 25);
+INSERT INTO `restaurants` (`id_restau`, `nom_restau`, `type_restau`, `note_restau`, `nbr_vente_j`, `nbr_vente_s`, `nbr_vente_m`, `nbr_j`, `ouverture_h`, `ouverture_m`, `Descriptio`) VALUES
+(1, 'Chez Luigi', 'Italien', 5, 1, 4, 5, 27, 10, 30, 'VOICI MON BG DE RESTO'),
+(2, 'Chez Ying', 'Chinois', 2, 2, 4, 6, 27, 11, 0, 'VOICI MON BG DE RESTO'),
+(3, 'Palais de jade', 'Chinois', 2, 2, 10, 10000, 25, 11, 30, 'VOICI MON BG DE RESTO'),
+(4, 'La tour eiffel', 'Francais', 5, 2, 10, 10000, 25, 12, 0, 'VOICI MON BG DE RESTO');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `users` (
-  `id_user` int NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `nom_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `prenom_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `login_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `mdp_user` varchar(25) CHARACTER SET ascii COLLATE ascii_general_ci NOT NULL,
   `id_logement` int NOT NULL,
-  `user_class` int NOT NULL DEFAULT '0'
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `user_class` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id_user`)
+) ENGINE=MyISAM AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id_user`, `nom_user`, `prenom_user`, `login_user`, `mdp_user`, `id_logement`, `user_class`) VALUES
 (1, 'Moreau', 'Romain', 'Mor_Ro', 'Test123*', 1, 1),
 (2, 'Degueldre', 'Ugo', 'De_Ug', 'Test123*', 2, 0),
 (3, 'Fofanah', 'Mankou', 'Fo_Man', 'Test123*', 3, 2);
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `billets`
---
-ALTER TABLE `billets`
-  ADD PRIMARY KEY (`id_billet`);
-
---
--- Indexes for table `chat_box`
---
-ALTER TABLE `chat_box`
-  ADD PRIMARY KEY (`id_chat`);
-
---
--- Indexes for table `commandes`
---
-ALTER TABLE `commandes`
-  ADD PRIMARY KEY (`num_commande`);
-
---
--- Indexes for table `logement`
---
-ALTER TABLE `logement`
-  ADD PRIMARY KEY (`id_logement`);
-
---
--- Indexes for table `message`
---
-ALTER TABLE `message`
-  ADD PRIMARY KEY (`id_message`);
-
---
--- Indexes for table `panier`
---
-ALTER TABLE `panier`
-  ADD PRIMARY KEY (`id_panier`);
-
---
--- Indexes for table `plats`
---
-ALTER TABLE `plats`
-  ADD PRIMARY KEY (`id_plat`);
-
---
--- Indexes for table `restaurants`
---
-ALTER TABLE `restaurants`
-  ADD PRIMARY KEY (`id_restau`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id_user`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `billets`
---
-ALTER TABLE `billets`
-  MODIFY `id_billet` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `chat_box`
---
-ALTER TABLE `chat_box`
-  MODIFY `id_chat` int NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `commandes`
---
-ALTER TABLE `commandes`
-  MODIFY `num_commande` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT for table `logement`
---
-ALTER TABLE `logement`
-  MODIFY `id_logement` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT for table `message`
---
-ALTER TABLE `message`
-  MODIFY `id_message` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `panier`
---
-ALTER TABLE `panier`
-  MODIFY `id_panier` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `plats`
---
-ALTER TABLE `plats`
-  MODIFY `id_plat` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `restaurants`
---
-ALTER TABLE `restaurants`
-  MODIFY `id_restau` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id_user` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
