@@ -14,6 +14,7 @@
             <?php 
 
             $varPlats = $db->accessListePlats();
+            $but = $_GET['id_restau'];
 
             if ($varPlats !== null) {
                 while ($data = $varPlats->fetch()) {
@@ -21,8 +22,9 @@
                     echo '<h2>',$data['nom_plat'],'</h2>';
                     echo '<p>',$data['type_plat'],'</p>';
                     echo '<p>',$data['prix_plat']. '€','</p>';
-                    echo '<form action="vuePlats.php?id_restau='.$data['id_restau'], 'method="post">';
-                    echo '<input type="submit" value="Ajouter au panier">';
+                    echo '<form action="vuePlats.php?name=',$but,' method="get">';
+                    echo '<input type="hidden" value="',$data['id_restau'],'"name="id_restau">';
+                    echo '<input type="submit" value="ajouter au panier">';
                     echo '</form>';
                     echo '</div></a>';
                 }

@@ -63,6 +63,7 @@ class Modele {
             $varPlat->execute();
         $varPlat->setFetchMode(PDO::FETCH_ASSOC);
         return $varPlat;
+        return $id_restau;
     }
 }
 
