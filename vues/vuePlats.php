@@ -15,11 +15,10 @@
 
             $varPlats = $db->accessListePlats();
 
-            while ($data = $varRestau->fetch()) {
-                echo '<h2>',$data['nom_restau'],'</h2>';
-                echo '<p>',$data['type_restau'],'</p>';
-                echo '<p>',$data['descriptio'],'</p>';
-                echo '<p>',$data['note_restau'], '★','</p>';
+            while ($data = $varPlats->fetch()) {
+                echo '<h2>',$data['nom_plat'],'</h2>';
+                echo '<p>',$data['type_plat'],'</p>';
+                echo '<p>',$data['prix_plat']. '€','</p>';
                 echo '</div></a>';
             }
             ?>

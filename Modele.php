@@ -44,7 +44,7 @@ class Modele {
             }
     }
     }
-   
+    
     private function getListeRestau(){
         $bdd = $this->getBdd();
         $varRestau = $bdd->query('SELECT nom_restau , note_restau , id_restau, descriptio, type_restau FROM restaurants');
@@ -54,11 +54,21 @@ class Modele {
 }
 
 
-    public function getPlats() {
+    private function getListeEntreesPlatsDesserts() {
         $bdd = $this->getBdd();
-        $listPlats = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats
-                            where id_restau = 1 AND type_plat = "Plat"');
-        return $listPlats;
+        $id_restau = $_GET['id_restau'];
+        $varPlat = $bdd->query('SELECT nom_plat , prix_plat , id_plat, type_plat FROM plats WHERE id_restau = :id_restau');
+        $varPlat->execute();
+        $varPlat->setFetchMode(PDO::FETCH_ASSOC);
+        return $varPlat;
+    }
+
+    private function getListePlats(){
+        $bdd = $this->getBdd();
+        $varPlat = $bdd->query('SELECT nom_plat , prix_plat , id_plat, type_plat FROM plats');
+        $varPlat->execute();
+        $varPlat->setFetchMode(PDO::FETCH_ASSOC);
+        return $varPlat;
     }
 
     public function getEntree() {
@@ -114,4 +124,8 @@ public function accessListeRestau() {
     return $this->getListeRestau();
 }
 
+public function accessListePlats() {
+    return $this->getListeEntreesPlatsDesserts();
+
+}
 }
