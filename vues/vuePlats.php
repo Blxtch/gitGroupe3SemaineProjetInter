@@ -13,8 +13,8 @@
         <main>
             <?php 
 
-            $varPlats = $db->accessListePlats();
-            $but = isset($_GET['id_restau']);
+            $varPlats = $db->accessListePlats($_GET['id_restau']);
+            $but = isset($_GET['id_restau']); 
 
             //$varPlats = $db->accessPanierPlat($_POST['id_restau'], $data['id_plat'], $data['prix_plat'], $_SESSION['id']);
 
@@ -24,20 +24,18 @@
                     echo '<h2>',$data['nom_plat'],'</h2>';
                     echo '<p>',$data['type_plat'],'</p>';
                     echo '<p>',$data['prix_plat']. '€','</p>';
-                    echo '<p>',$data['id_plat'],'</p>';
-                    echo '<form action="vuePlats.php?name=',$but.'&id='.$data['id_plat'].'&prix='.$data['prix_plat'],' method="get">';
+                    echo '<form action="vuePlats.php?name='.$but.'&id='.$data['id_plat'].'&prix'.$data['prix_plat'].' method="get">';
                     echo '<input type="hidden" value="',$data['id_restau'],'"name="id_restau">';
                     echo '<input type="hidden" value="',$data['id_plat'],'"name="id_plat">';
                     echo '<input type="hidden" value="',$data['prix_plat'],'"name="prix_plat">';
                     echo '<input type="submit" value="ajouter au panier">';
                     echo '</form>';
                     echo '</div></a>';
-
-                    
                 }
             }
-            if (isset($_GET['id_restau'])) {
-                $addPanier = $db->accessPanierPlat($_GET['id_restau'], $_GET['id_plat'], $_GET['prix_plat']);
+            
+            if (isset($_GET['id_restau']) && isset($_GET['id_plat']) && isset($_GET['prix_plat'])) {
+                $addPanier = $db->accessPanierPlat($_GET['id_restau'], $_GET['id_plat'], $_GET['prix_plat'], 1 );
             }
             ?>
                 

@@ -51,7 +51,7 @@ class Modele {
 
     private function getListeEntreesPlatsDesserts() {
         $bdd = $this->getBdd();
-        $varPlat = $bdd->prepare('SELECT * FROM plats WHERE id_restau = :id_restau');
+        $varPlat = $bdd->prepare('SELECT DISTINCT * FROM plats WHERE id_restau = :id_restau');
         if(isset($_GET['id_restau'])){
             $id_restau = $_GET['id_restau'];
             $varPlat->bindParam(':id_restau', $id_restau);
@@ -59,6 +59,7 @@ class Modele {
         $varPlat->setFetchMode(PDO::FETCH_ASSOC);
         return $varPlat;
         return $id_restau;
+
     }
 }
 
@@ -92,14 +93,15 @@ class Modele {
         $id_plat = $_GET['id_plat'];
         $prix_plat = $_GET['prix_plat'];
         $id_restau = $_GET['id_restau'];
-        $id_user = $_SESSION['id'];
-        $modif = $bdd->prepare('INSERT INTO panier (id_plat, prix_plat, id_restau, id_user) VALUES (:id_plat, :prix_plat, :id_restau, :id_user)');
+        $id_user = 1;
+        $modif = $bdd->prepare('INSERT INTO panier (id_panier, id_plat, prix_plat, id_restau, id_user) VALUES (:id_user ,:id_plat, :prix_plat, :id_restau, :id_user)');
+        $modif->bindParam(':id_panier', $id_user);
         $modif->bindParam(':id_plat', $id_plat);
         $modif->bindParam(':prix_plat', $prix_plat);
         $modif->bindParam(':id_restau', $id_restau);
         $modif->bindParam(':id_user', $id_user);
         $modif->execute();
-        header('Location: vuePlats.php?id_restau'.$id_restau );
+        header('Location: vuePlats.php?id_restau='.$id_restau );
     
     }
 
