@@ -51,7 +51,7 @@ class Modele {
 
     private function getListeEntreesPlatsDesserts() {
         $bdd = $this->getBdd();
-        $varPlat = $bdd->prepare('SELECT nom_plat , prix_plat , id_plat, type_plat, id_restau FROM plats WHERE id_restau = :id_restau');
+        $varPlat = $bdd->prepare('SELECT * FROM plats WHERE id_restau = :id_restau');
         if(isset($_GET['id_restau'])){
             $id_restau = $_GET['id_restau'];
             $varPlat->bindParam(':id_restau', $id_restau);
@@ -89,14 +89,15 @@ class Modele {
 
     private function panierPlat(){
         $bdd = $this->getBdd();
-        $nom_plat = $_POST['nom_plat'];
-        $prix_plat = $_POST['prix_plat'];
-        $type_plat = $_POST['type_plat'];
-        $id_restau = $_POST['id_restau'];
-        $varPanier = $bdd->prepare('INSERT INTO panier (nom_plat, prix_plat, type_plat) VALUES (:nom_plat, :prix_plat, :type_plat)');
-        $modif->bindParam(':nom_plat', $nom_plat);
+        $id_plat = $_GET['id_plat'];
+        $prix_plat = $_GET['prix_plat'];
+        $id_restau = $_GET['id_restau'];
+        $id_user = $_SESSION['id'];
+        $modif = $bdd->prepare('INSERT INTO panier (id_plat, prix_plat, id_restau, id_user) VALUES (:id_plat, :prix_plat, :id_restau, :id_user)');
+        $modif->bindParam(':id_plat', $id_plat);
         $modif->bindParam(':prix_plat', $prix_plat);
-        $modif->bindParam(':type_plat', $type_plat);
+        $modif->bindParam(':id_restau', $id_restau);
+        $modif->bindParam(':id_user', $id_user);
         $modif->execute();
         header('Location: vuePlats.php?id_restau'.$id_restau );
     

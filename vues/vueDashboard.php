@@ -8,24 +8,23 @@
 
     //si admin -> fct modo + insert table listRestau ET update listRestau (pas de gestion de delete enfin pour l'instant)
 ?>
-<h1>DASHBOARD</h1>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD</title>
-    <link rel= "stylesheet" href="../css/stylePlats.css">
+    <link rel= "stylesheet" href="../css/styleDashboard.css">
 </head>
+<?php include_once '../gabarits/header.php'; ?>
 <body>
-    <?php include_once '../gabarits/header.php';
-        $modif = $db -> accessListePlats();
+    
+        <?php $modif = $db -> accessListePlats();
 
         if (isset ($_POST['ok'])) {
             $newRestau = $db-> accessModifRestau($_POST['nom_restau'], $_POST['type_restau'], $_POST['note_restau'], $_POST['descriptio']);
             }
-        echo '<div id="modif">';
+        echo '<div class="modif-container">';
         echo '<form action="vueDashboard.php" method="post">';
         echo '<p> Nom: ', '<input type = "text" name="nom_restau">';
         echo '<p> type: ', '<input type = "text" name="type_restau">';
@@ -33,7 +32,9 @@
         echo '<p> Description: ', '<input type = "textarea" name="descriptio">';
         echo '<p> <input type="submit" value="Envoyer" name="ok" ></p>';
         echo '</form>';
-    include_once '../gabarits/footer.php';
-    ?>
+        echo '</div>';
+?>
 </body>
+
+    <?php include_once '../gabarits/footer.php';?>
 

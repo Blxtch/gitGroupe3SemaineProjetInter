@@ -5,7 +5,6 @@
 //     header('Location: vueLogin.php');
 //     exit();
 // }
-
 ?>
 
 <!DOCTYPE html>
