@@ -105,6 +105,22 @@ class Modele {
     
     }
 
+    private function getListePlatsPanier(){
+        $bdd = $this->getBdd();
+        $varPlat = $bdd->query('SELECT nom_plat , pa.prix_plat , type_plat FROM panier as pa JOIN plats as pl ON pl.id_plat = pa.id_plat WHERE id_user = 1;');
+        $varPlat->execute();
+        $varPlat->setFetchMode(PDO::FETCH_ASSOC);
+        return $varPlat;
+    }
+
+    private function getCommande(){
+        $bdd = $this->getBdd();
+        $varCmd = $bdd->query('INSERT * FROM panier ON commande WHERE id_user = 1;');
+        $varCommande = $bdd->query('DELETE FROM panier WHERE id_user = 1;');
+        $varCmd->execute();
+        $varCommande->execute();
+    }
+
     public function getEntree() {
         $bdd = $this->getBdd();
         $listEntree = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats
@@ -171,4 +187,13 @@ public function accessPanierPlat() {
     return $this->panierPlat();
 }
 
+public function accessListePlatsPanier() {
+    return $this->getListePlatsPanier();
+
+}
+
+public function accessEnvoiCommande() {
+    return $this->getCommande();
+
+}
 }
