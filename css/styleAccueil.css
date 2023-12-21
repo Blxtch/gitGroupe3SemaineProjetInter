@@ -20,11 +20,12 @@ main{
 
 .restau{
     max-width: 400px;
-    margin: 100px auto;
+    margin: 0;
     background-color: #fff;
     padding: 20px 30px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
+
 }
 
 a{
@@ -35,4 +36,10 @@ a{
 a:hover{
     text-decoration: none;
     color: #f57900;
+}
+
+footer{
+    background-color: #f57900;
+    margin: 0;
+    padding: 0;
 }

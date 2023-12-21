@@ -6,9 +6,6 @@
 //     exit();
 // }
 
-echo $_SESSION['id'];
-echo $_SESSION['login'];
-
 ?>
 
 <!DOCTYPE html>

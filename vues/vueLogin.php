@@ -1,8 +1,5 @@
 <?php //require_once '../index.php';
 //require_once 'db.php';
-
-echo $_SESSION['id'];
-
 if (isset ($_SESSION['id'])) {
     include 'vueAccueil.php';
 }
