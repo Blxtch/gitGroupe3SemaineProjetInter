@@ -89,7 +89,17 @@ class Modele {
 
     private function panierPlat(){
         $bdd = $this->getBdd();
-        $varPanier = $bdd->query("INSERT INTO panier VALUES ('" . $user['id_user'] . "', '" . $plat['id_plat'] . "', '" . $user['id_user'] . "', '" . $id_restau . "', '" . $plat['prix_plat'] . "')");
+        $nom_plat = $_POST['nom_plat'];
+        $prix_plat = $_POST['prix_plat'];
+        $type_plat = $_POST['type_plat'];
+        $id_restau = $_POST['id_restau'];
+        $varPanier = $bdd->prepare('INSERT INTO panier (nom_plat, prix_plat, type_plat) VALUES (:nom_plat, :prix_plat, :type_plat)');
+        $modif->bindParam(':nom_plat', $nom_plat);
+        $modif->bindParam(':prix_plat', $prix_plat);
+        $modif->bindParam(':type_plat', $type_plat);
+        $modif->execute();
+        header('Location: vuePlats.php?id_restau'.$id_restau );
+    
     }
 
     public function getEntree() {

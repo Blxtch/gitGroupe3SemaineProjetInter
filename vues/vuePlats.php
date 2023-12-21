@@ -22,11 +22,15 @@
                     echo '<h2>',$data['nom_plat'],'</h2>';
                     echo '<p>',$data['type_plat'],'</p>';
                     echo '<p>',$data['prix_plat']. '€','</p>';
-                    echo '<form action="vuePlats.php?name=',$but,' method="get">';
+                    echo '<form action="vuePlats.php?name=',$but,' method="post">';
                     echo '<input type="hidden" value="',$data['id_restau'],'"name="id_restau">';
                     echo '<input type="submit" value="ajouter au panier">';
                     echo '</form>';
                     echo '</div></a>';
+                }
+                if (isset($_GET['id_restau'])) {
+                    $but = $_GET['id_restau'];
+                    $newPlat = $db->accessPanierPlat($data['nom_plat'], $data['type_plat'], $data['prix_plat'], $but);
                 }
             }
             ?>
