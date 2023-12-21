@@ -6,34 +6,25 @@ class Modele {
         $bdd = new PDO('mysql:host=localhost;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         return $bdd;
     }
-
-    // private function pour obtenir les logins {
-    private function getLogin($username, $password) {
-        $bdd = $this->getBdd();
-        $sql = $bdd->prepare("SELECT * FROM users WHERE login_user = :username");
-        $sql->execute(['username' => $username]);
-        $user = $sql->fetch();
-        return $user;
-    }
         
     private function checkLogin() {
-
         if (isset($_POST['username']) && isset($_POST['password'])) {
             $username = $_POST['username'];
             $password = hash('sha256', $_POST['password']);
     
-            $user = $this -> getLogin($username, $password);
-            echo $user;
+            $bdd = $this->getBdd();
+            $sql = $bdd->prepare("SELECT * FROM users WHERE login_user = :username");
+            $sql->execute(['username' => $username]);
+            $user = $sql->fetch();
             if ($user) {
                 $mdp_user = hash('sha256', $user['mdp_user']);
                 
                 if ($password == $mdp_user) {
-                    session_start();
                     $_SESSION['id'] = $user['id_user'];
+                    $_SESSION['login'] = $user['login_user'];
+                    session_start();
                     header('Location: vueAccueil.php');
                     exit();
-
-                    return $_SESSION['id'];
                 } 
                 else {
                     $message = 'Mauvais identifiants';
@@ -42,7 +33,10 @@ class Modele {
             else {
                 $message = 'Non connecté';
             }
-    }
+        }
+        else {
+            echo 'Veuillez remplir les champs';
+        }
     }
     
     private function getListeRestau(){
@@ -91,6 +85,11 @@ class Modele {
             $modif->execute();
             header('Location: vues/vueDashboard.php');
         }
+    }
+
+    private function panierPlat(){
+        $bdd = $this->getBdd();
+        $varPanier =$bdd->query('INSERT INTO panier VALUES('$user['id_user']','$plat['id_plat']' ,'$user['id_user']', '$id_restau' , '$plat['prix_plat']')');
     }
 
     public function getEntree() {
@@ -153,6 +152,10 @@ public function accessListePlats() {
 
 public function accessModifRestau() {
     return $this->addRestau();
+}
+
+public function accessPanierPlat() {
+    return $this->panierPlat();
 }
 
 }

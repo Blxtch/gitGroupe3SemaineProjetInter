@@ -1,7 +1,10 @@
 <?php require_once '../index.php';
-$_POST['username'] = '';
-$_POST['password'] = '';
+require_once '../db.php';
 
+if (isset($_SESSION['id'])) {
+    session_destroy();
+    unset($_POST);
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +23,7 @@ $_POST['password'] = '';
             <p style="color:red"><?= $message ?></p>
         <?php endif; ?>
 
-        <form action="vueLogin.php" method="post">
+        <form action="vueAccueil.php" method="post">
             <div>
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" id="username" name="username">
@@ -40,4 +43,8 @@ $_POST['password'] = '';
     </body>
     </html>
 
-<?php $db->accessLogin($_POST['username'], $_POST['password']); ?>
+<?php 
+if (isset($_POST['username']) && isset($_POST['password'])) {
+    $db->accessLogin($_POST['username'], $_POST['password']);
+}
+?>

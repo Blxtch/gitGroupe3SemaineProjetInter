@@ -1,5 +1,15 @@
 
-<?php require '../index.php'; ?>
+<?php require '../index.php';
+
+// if (!isset($_SESSION['id'])) {
+//     header('Location: vueLogin.php');
+//     exit();
+// }
+
+echo $_SESSION['id'];
+echo $_SESSION['login'];
+
+?>
 
 <!DOCTYPE html>
 <html lang="fr">

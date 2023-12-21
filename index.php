@@ -1,12 +1,15 @@
 <?php
 require_once 'modele.php';
-$db = new Modele;
-$db -> getInstance();
+require_once 'db.php';
 
-session_start();
+$_SESSION['id'] = $db-> accessLogin();
 
+if (!isset ($_SESSION['id'])) {
+    require_once 'vues/vueLogin.php';
+}
 
-
+$username = '';
+$password = '';
 
 //géer avec des variables de
 
