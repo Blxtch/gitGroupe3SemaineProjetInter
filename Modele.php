@@ -10,7 +10,6 @@ class Modele {
             die("Database connection failed: " . $e->getMessage());
         }
     }
-    }
         
     private function checkLogin() {
         if (isset($_POST['username']) && isset($_POST['password'])) {
