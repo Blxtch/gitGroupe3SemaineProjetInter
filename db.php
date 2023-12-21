@@ -1,5 +1,5 @@
 <?php
-
+include 'Modele.php';
 $db = new Modele;
 $db -> getInstance();
 

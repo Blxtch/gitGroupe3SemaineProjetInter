@@ -1,4 +1,4 @@
-<?php require '../index.php'; ?>
+<?php require '../db.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -15,6 +15,7 @@
 
             $varPlats = $db->accessListePlats();
             $but = $_GET['id_restau'];
+            //$varPlats = bd->accesListPlat;
 
             if ($varPlats !== null) {
                 while ($data = $varPlats->fetch()) {

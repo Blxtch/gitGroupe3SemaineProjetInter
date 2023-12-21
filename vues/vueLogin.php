@@ -1,9 +1,10 @@
-<?php require_once '../index.php';
-require_once '../db.php';
+<?php //require_once '../index.php';
+//require_once 'db.php';
 
-if (isset($_SESSION['id'])) {
-    session_destroy();
-    unset($_POST);
+echo $_SESSION['id'];
+
+if (isset ($_SESSION['id'])) {
+    include 'vueAccueil.php';
 }
 ?>
 
@@ -13,7 +14,7 @@ if (isset($_SESSION['id'])) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DelivISIM | Connexion</title>
-    <link rel= "stylesheet" href="../css/styleLogin.css">
+    <link rel= "stylesheet" href="css/styleLogin.css">
 </head>
 <body>
     <div class="login-container">
@@ -23,7 +24,7 @@ if (isset($_SESSION['id'])) {
             <p style="color:red"><?= $message ?></p>
         <?php endif; ?>
 
-        <form action="vueAccueil.php" method="post">
+        <form action="index.php" method="post">
             <div>
                 <label for="username">Nom d'utilisateur:</label>
                 <input type="text" id="username" name="username">
@@ -44,7 +45,5 @@ if (isset($_SESSION['id'])) {
     </html>
 
 <?php 
-if (isset($_POST['username']) && isset($_POST['password'])) {
-    $db->accessLogin($_POST['username'], $_POST['password']);
-}
+
 ?>

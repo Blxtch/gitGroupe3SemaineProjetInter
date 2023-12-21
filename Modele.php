@@ -22,8 +22,8 @@ class Modele {
                 if ($password == $mdp_user) {
                     $_SESSION['id'] = $user['id_user'];
                     $_SESSION['login'] = $user['login_user'];
-                    session_start();
-                    header('Location: vueAccueil.php');
+                    //session_start();
+                    header('Location: index.php');
                     exit();
                 } 
                 else {
@@ -89,7 +89,7 @@ class Modele {
 
     private function panierPlat(){
         $bdd = $this->getBdd();
-        $varPanier =$bdd->query('INSERT INTO panier VALUES('$user['id_user']','$plat['id_plat']' ,'$user['id_user']', '$id_restau' , '$plat['prix_plat']')');
+        $varPanier = $bdd->query("INSERT INTO panier VALUES ('" . $user['id_user'] . "', '" . $plat['id_plat'] . "', '" . $user['id_user'] . "', '" . $id_restau . "', '" . $plat['prix_plat'] . "')");
     }
 
     public function getEntree() {

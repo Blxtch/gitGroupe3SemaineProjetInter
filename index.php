@@ -2,14 +2,20 @@
 require_once 'modele.php';
 require_once 'db.php';
 
+
+include 'controllerLogin.php';
 $_SESSION['id'] = $db-> accessLogin();
 
+//echo $_SESSION['id'];
+
 if (!isset ($_SESSION['id'])) {
-    require_once 'vues/vueLogin.php';
+    //include 'controllerLogin.php';
 }
 
-$username = '';
-$password = '';
+elseif (isset ($_SESSION['id'])) {
+    echo 'sioadiuHDZioUHAzdukihaiuqdhauiohddiuhaiudhaiuhdiuhadui';
+    include 'vues/vueAccueil.php';
+}
 
 //géer avec des variables de
 
