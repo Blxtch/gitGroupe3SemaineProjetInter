@@ -16,6 +16,7 @@ header img{
 main{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
+    margin-bottom: 50px;
 }
 
 
@@ -47,5 +48,5 @@ footer{
     background-color: #f57900;
     margin: 0;
     padding: 0;
-    padding-bottom:150px ;
+    padding-bottom: 91px ;
 }
