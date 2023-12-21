@@ -1,6 +1,7 @@
 html{
     margin:0;
     padding: 0;
+    overflow-x : hidden;
 }
 
 header{
@@ -20,7 +21,7 @@ main{
 
 .restau{
     max-width: 400px;
-    margin: 0;
+    margin: 20px auto;
     background-color: #fff;
     padding: 20px 30px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -38,8 +39,13 @@ a:hover{
     color: #f57900;
 }
 
+.login-container{
+    display:none;
+}
+
 footer{
     background-color: #f57900;
     margin: 0;
     padding: 0;
+    padding-bottom:150px ;
 }

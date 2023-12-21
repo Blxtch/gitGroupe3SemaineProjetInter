@@ -20,7 +20,7 @@ main{
 
 .plat{
     max-width: 400px;
-    margin: 100px auto;
+    margin: 20px;
     background-color: #fff;
     padding: 20px 30px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);

@@ -13,7 +13,6 @@ if (!isset ($_SESSION['id'])) {
 }
 
 elseif (isset ($_SESSION['id'])) {
-    echo 'sioadiuHDZioUHAzdukihaiuqdhauiohddiuhaiudhaiuhdiuhadui';
     include 'vues/vueAccueil.php';
 }
 
