@@ -32,7 +32,7 @@ require_once '../db.php';
 
             
         </main>
-        <form action="vuePanier.php" method="post">
+        <form action="vueCommande.php" method="post">
         <input type="submit" value="Valider la commande" name='ok'>
         </form>
 

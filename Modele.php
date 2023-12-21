@@ -115,10 +115,22 @@ class Modele {
 
     private function getCommande(){
         $bdd = $this->getBdd();
-        $varCmd = $bdd->query('INSERT * FROM panier ON commande WHERE id_user = 1;');
+        $varCmd = $bdd->query('INSERT INTO commandes (id_user, id_restau, id_plat) SELECT id_user, id_restau, id_plat FROM panier WHERE id_user = 1;');
         $varCommande = $bdd->query('DELETE FROM panier WHERE id_user = 1;');
         $varCmd->execute();
         $varCommande->execute();
+    }
+
+    private function getListeCommandes(){
+        $bdd = $this->getBdd();
+        $varCmd = $bdd->query('SELECT num_commande , etat_commande , u.prenom_user , l.nom_logement FROM commandes as c
+        JOIN users as u ON c.id_user = u.id_user
+        JOIN logement as l ON c.id_logement = u.id_logement
+        WHERE c.id_user = 1;
+        ');
+        $varCmd->execute();
+        $varCmd->setFetchMode(PDO::FETCH_ASSOC);
+        return $varCmd;
     }
 
     public function getEntree() {
@@ -194,6 +206,11 @@ public function accessListePlatsPanier() {
 
 public function accessEnvoiCommande() {
     return $this->getCommande();
+
+}
+
+public function accessListeCommandes() {
+    return $this->getListeCommandes();
 
 }
 }
