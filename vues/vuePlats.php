@@ -14,7 +14,7 @@
             <?php 
 
             $varPlats = $db->accessListePlats();
-            $but = $_GET['id_restau'];
+            $but = isset($_GET['id_restau']);
 
             if ($varPlats !== null) {
                 while ($data = $varPlats->fetch()) {
@@ -27,10 +27,6 @@
                     echo '<input type="submit" value="ajouter au panier">';
                     echo '</form>';
                     echo '</div></a>';
-                }
-                if (isset($_GET['id_restau'])) {
-                    $but = $_GET['id_restau'];
-                    $newPlat = $db->accessPanierPlat($data['nom_plat'], $data['type_plat'], $data['prix_plat'], $but);
                 }
             }
             ?>
