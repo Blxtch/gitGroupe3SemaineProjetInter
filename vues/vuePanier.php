@@ -41,7 +41,7 @@ require_once '../db.php';
             $newCommande = $db-> accessEnvoiCommande();
             }
 
-    <?php include_once '../gabarits/footer.php'; ?>
+    include_once '../gabarits/footer.php'; ?>
 </body>
 </html>
 
