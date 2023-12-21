@@ -46,6 +46,7 @@ if (isset($_SESSION['id'])) {
     </html>
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php 
 if (isset($_POST['username']) && isset($_POST['password'])) {
     $db->accessLogin($_POST['username'], $_POST['password']);
@@ -54,3 +55,6 @@ if (isset($_POST['username']) && isset($_POST['password'])) {
 =======
 <?php //$db->accessLogin($_POST['username'], $_POST['password']);" ?>
 >>>>>>> a2218aa (branche de debug)
+=======
+<?php //$db->accessLogin($_POST['username'], $_POST['password']);" ?>
+>>>>>>> a2218aa061c58db0b2a0b669726e4618201101e2
