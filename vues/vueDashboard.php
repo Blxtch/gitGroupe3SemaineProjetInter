@@ -1,5 +1,5 @@
-<?php 
-include_once '../index.php';
+<?php
+    include_once '../db.php'; // Add a semicolon at the end of this line
     //fetch le niveau d'accès du user
     //ensuite dans un if gérer l'affichage
 
@@ -21,6 +21,10 @@ include_once '../index.php';
 <body>
     <?php include_once '../gabarits/header.php';
         $modif = $db -> accessListePlats();
+
+        if (isset ($_POST['ok'])) {
+            $newRestau = $db-> accessModifRestau($_POST['nom_restau'], $_POST['type_restau'], $_POST['note_restau'], $_POST['descriptio']);
+            }
         echo '<div id="modif">';
         echo '<form action="vueDashboard.php" method="post">';
         echo '<p> Nom: ', '<input type = "text" name="nom_restau">';

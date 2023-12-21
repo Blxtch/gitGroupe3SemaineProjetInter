@@ -15,7 +15,6 @@
 
             $varPlats = $db->accessListePlats();
             $but = $_GET['id_restau'];
-            //$varPlats = bd->accesListPlat;
 
             if ($varPlats !== null) {
                 while ($data = $varPlats->fetch()) {

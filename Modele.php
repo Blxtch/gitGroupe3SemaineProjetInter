@@ -4,7 +4,7 @@ class Modele {
 
     private function getBdd() {
         try {
-            $bdd = new PDO('mysql:host=192.168.110.9;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+            $bdd = new PDO('mysql:host=localhost;dbname=dbsemaineprojetdef;charset=utf8', 'AdminISIM' ,'Test123*', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
             return $bdd;
         } catch (PDOException $e) {
             die("Database connection failed: " . $e->getMessage());
@@ -71,20 +71,19 @@ class Modele {
     }
 
     private function addRestau(){
-        $bdd = $this->getBdd();
-        if (isset($_POST['ok']))
-        {
+        $bd = $this->getBdd();
+        if (isset($_POST['ok'])) {
             $nom_restau = $_POST['nom_restau'];
             $type_restau = $_POST['type_restau'];
             $note_restau = $_POST['note_restau'];
-            $descritpio = $_POST['descritpio'];
-            $modif = $bd->prepare('INSERT users SET nom_restau = :nom_restau, type_restau = :type_restau, note_restau = :note_restau descriptio = :descriptio');
+            $descritpio = $_POST['descriptio'];
+            $modif = $bd->prepare('INSERT INTO restaurants (nom_restau, type_restau, note_restau, descriptio) VALUES (:nom_restau, :type_restau, :note_restau, :descriptio)');
             $modif->bindParam(':nom_restau', $nom_restau);
             $modif->bindParam(':type_restau', $type_restau);
             $modif->bindParam(':note_restau', $note_restau);
             $modif->bindParam(':descriptio', $descritpio);
             $modif->execute();
-            header('Location: vues/vueDashboard.php');
+            header('Location: vueDashboard.php');
         }
     }
 
