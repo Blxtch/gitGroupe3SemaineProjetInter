@@ -131,28 +131,42 @@ class Modele {
         $varCmd = $bdd->query('SELECT id_commande , etat_commande , u.prenom_user , l.nom_logement FROM commandes as c
         JOIN users as u ON c.id_user = u.id_user
         JOIN logement as l ON c.id_logement = u.id_logement
-        WHERE c.id_user = 1;
-        ');
+        WHERE c.id_user = 1;');
         $varCmd->execute();
         $varCmd->setFetchMode(PDO::FETCH_ASSOC);
         return $varCmd;
     }
 
-    public function getEntree() {
+    private function addPlat(){
+        $bd = $this->getBdd();
+        if (isset($_POST['ok'])) {
+            $nom_plat = $_POST['nom_plat'];
+            $type_plat = $_POST['type_plat'];
+            $prix_plat = $_POST['prix_plat'];
+            $modif = $bd->prepare('INSERT INTO plat (nom_plat, type_plat, prix_plat) VALUES (:nom_plat, :type_plat, :prix_plat)');
+            $modif->bindParam(':nom_plat', $nom_plat);
+            $modif->bindParam(':type_plat', $type_plat);
+            $modif->bindParam(':prix_plat', $prix_plat);
+            $modif->execute();
+            header('Location: vueDashboardModo.php');
+    }
+}
+
+    private function getEntree() {
         $bdd = $this->getBdd();
         $listEntree = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats
                             where id_restau = 1 AND type_plat = "entree";');
         return $listEntree;
     }
 
-    public function getDessert() {
+    private function getDessert() {
         $bdd = $this->getBdd();
         $listDessert = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats
                             where id_restau = 1 AND type_plat = "Dessert";');
         return $listDessert;
     }
 
-    public function getEntreePlat() {
+    private function getEntreePlat() {
         $bdd = $this->getBdd();
         $listEntreePlat = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats 
                             where id_restau = 1 AND type_plat = "Plat" OR type_plat = "entree";');
@@ -161,14 +175,14 @@ class Modele {
     }
 
 
-    public function getPlatDessert() {
+    private function getPlatDessert() {
         $bdd = $this->getBdd();
         $listPlatDessert = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats 
                             where id_restau = 1 AND type_plat = "Plat" OR type_plat = "Dessert";');
         return $listPlatDessert;
     }
 
-    public function getEntreeDessert() {
+    private function getEntreeDessert() {
         $bdd = $this->getBdd();
         $listEntreeDessert = $bdd->query('SELECT nom_plat , type_plat , prix_plat from plats 
                             where id_restau = 1 AND type_plat = "entree" OR type_plat = "Dessert";');
@@ -176,16 +190,12 @@ class Modele {
         return $listEntreeDessert;
     }
 
-    public function getTotal() {
+    private function getTotal() {
         $bdd = $this->getBdd();
         $total = $bdd ->query( 'SELECT SUM(prix_plat) FROM panier WHERE id_user = 1;' );
         return $total;
     }
-    public function getTotal() {
-        $bdd = $this->getBdd();
-        $total = $bdd ->query( 'SELECT SUM(prix_plat) FROM panier WHERE id_user = 1;' );
-        return $total;
-    }
+
 # Publics methods
 
 // Accès BDD
@@ -228,6 +238,15 @@ public function accessEnvoiCommande() {
 public function accessListeCommandes() {
     return $this->getListeCommandes();
 
+}
+
+public function accessAddPlat(){
+    return $this->addPlat();
+
+}
+
+public function accessGetTotal(){
+    return $this->getTotal();
 }
 
 }
