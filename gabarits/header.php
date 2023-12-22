@@ -5,7 +5,7 @@
 
     <nav>
         <ul>
-            <li><a href="../index.php">Accueil</a></li>
+            <li><a href="index.php">Accueil</a></li>
             <?php
                 //solution improbable qui mène à des pb de bypass à éviter
                 // if (isset($_SESSION['class'])){
@@ -18,8 +18,8 @@
              ?>
             <li><a href="vues/vueDashboard.php">Dashboard</a></li>
             
-            <li><a href='vuePanier.php class ="header"'>Panier</a></li>
-            <li><a href='vueCommande.php class ="header"'>Commandes</a></li>
+            <li><a href='vues/vuePanier.php '>Panier</a></li>
+            <li><a href='vues/vueCommande.php '>Commandes</a></li>
         </ul>
     </nav>
 </header>
