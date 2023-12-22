@@ -18,10 +18,25 @@
     <title>DASHBOARD</title>
     <link rel= "stylesheet" href="../css/styleDashboard.css">
 </head>
-<?php include_once '../gabarits/header.php'; ?>
+
 <body>
-    
-        <?php $modif = $db -> accessListePlats();
+    <header>
+        <img src="img/logo.png" alt="" id='sans'>
+        <img src="../img/logo.png" alt="" id="avec">  
+
+
+        <nav>
+            <ul>
+                <li><a href="../index.php">Accueil</a></li>
+            
+                <li><a href="vueDashboard.php">Dashboard</a></li>
+                
+                <li><a href="vuePanier.php">Panier</a></li>
+                <li><a href="vueCommande.php">Commandes</a></li>
+            </ul>
+        </nav>
+    </header>
+    <?php $modif = $db -> accessListePlats();
 
         if (isset ($_POST['ok'])) {
             $newRestau = $db-> accessModifRestau($_POST['nom_restau'], $_POST['type_restau'], $_POST['note_restau'], $_POST['descriptio']);
@@ -35,7 +50,7 @@
         echo '<p> <input type="submit" value="Envoyer" name="ok" ></p>';
         echo '</form>';
         echo '</div>';
-?>
+    ?>
 </body>
 
     <?php include_once '../gabarits/footer.php';?>
