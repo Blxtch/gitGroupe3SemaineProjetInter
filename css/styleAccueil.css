@@ -9,6 +9,11 @@ header{
     margin: 0;
 }
 
+header nav ul li .header{
+    color: #fff;
+    text-decoration: none;
+}
+
 header img{
     width : 10%;
 }
@@ -54,3 +59,5 @@ footer {
     color: #000;         
     padding: 10px;
 }
+
+

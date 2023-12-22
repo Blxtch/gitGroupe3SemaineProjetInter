@@ -26,6 +26,9 @@ class Modele {
                 if ($password == $mdp_user) {
                     $_SESSION['id'] = $user['id_user'];
                     $_SESSION['login'] = $user['login_user'];
+                    $_SESSION['prenom'] = $user['prenom_user'];
+                    $_SESSION['nom'] = $user['nom_user'];
+                    $_SESSION['class'] = $user['user_class'];
                     //session_start();
                     header('Location: index.php');
                     exit();
@@ -173,15 +176,13 @@ class Modele {
         return $listEntreeDessert;
     }
 
-    public get_total(){
+    // public get_total(){
 
-        //fonctionne avec notre user...
-        $bdd = $this->getBdd();
-        $total = $Bdd ->query( 'SELECT SUM(prix_plat) FROM `panier` where id_user = 1;' );
-
-
-        return $total
-    }
+    //     //fonctionne avec notre user...
+    //     $bdd = $this->getBdd();
+    //     $total = $Bdd ->query( 'SELECT SUM(prix_plat) FROM `panier` where id_user = 1;' );
+    //     return $total
+    // }
 # Publics methods
 
 // Accès BDD
