@@ -7,6 +7,8 @@
     //si modo -> peux insert dans la table listPlat ET update cette même table AND update de l'horaire 
 
     //si admin -> fct modo + insert table listRestau ET update listRestau (pas de gestion de delete enfin pour l'instant)
+
+    
 ?>
 <!DOCTYPE html>
 <html lang="fr">
