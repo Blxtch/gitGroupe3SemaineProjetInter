@@ -40,7 +40,11 @@
             ?>
                 
         </main>
-
+            <?php
+            echo '<form action="vueDashBoardModo.php?name='.$_GET['id_restau'].' method="get">';
+            echo '<input type="hidden" value="',$_GET['id_restau'],'name="id_restau">';
+            echo '<input type="submit" value="Ajouter un plat">';
+            ?>
     <?php include_once '../gabarits/footer.php'; ?>
 </body>
 </html>
