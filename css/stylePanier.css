@@ -38,10 +38,7 @@ main{
 
 }
 
-a{
-    text-decoration: none;
-    color: #000000;
-}
+
 
 a:hover{
     text-decoration: none;
@@ -81,4 +78,8 @@ footer {
 li a{
     text-decoration: none;
     color: #fff;
+}
+
+ul {
+    list-style-type: none;
 }
