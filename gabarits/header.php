@@ -7,9 +7,9 @@
         <ul>
             <li><a href="../index.php">Accueil</a></li>
             <?php
-            echo $_SESSION['id'];
-                if (isset($_SESSION['id'])){
-                    if ($_SESSION['id'] > 0) {
+            
+                if (isset($_SESSION['class'])){
+                    if ($_SESSION['class'] > 0) {
                         echo '<li><a href="vueDashboard.php">Dashboard</a></li>';
                     }
                     else{
