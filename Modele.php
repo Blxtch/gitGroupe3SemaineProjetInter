@@ -119,11 +119,13 @@ class Modele {
         $varCommande = $bdd->query('DELETE FROM panier WHERE id_user = 1;');
         $varCmd->execute();
         $varCommande->execute();
+        
+        
     }
 
     private function getListeCommandes(){
         $bdd = $this->getBdd();
-        $varCmd = $bdd->query('SELECT num_commande , etat_commande , u.prenom_user , l.nom_logement FROM commandes as c
+        $varCmd = $bdd->query('SELECT id_commande , etat_commande , u.prenom_user , l.nom_logement FROM commandes as c
         JOIN users as u ON c.id_user = u.id_user
         JOIN logement as l ON c.id_logement = u.id_logement
         WHERE c.id_user = 1;
