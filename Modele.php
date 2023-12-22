@@ -138,19 +138,20 @@ class Modele {
     }
 
     private function addPlat(){
-        $bd = $this->getBdd();
-        if (isset($_POST['ok'])) {
-            $nom_plat = $_POST['nom_plat'];
-            $type_plat = $_POST['type_plat'];
-            $prix_plat = $_POST['prix_plat'];
-            $modif = $bd->prepare('INSERT INTO plat (nom_plat, type_plat, prix_plat) VALUES (:nom_plat, :type_plat, :prix_plat)');
-            $modif->bindParam(':nom_plat', $nom_plat);
-            $modif->bindParam(':type_plat', $type_plat);
-            $modif->bindParam(':prix_plat', $prix_plat);
-            $modif->execute();
-            header('Location: vueDashboardModo.php');
+        $bdd = $this->getBdd();
+        $nom_plat = $_GET['nom_plat'];
+        $prix_plat = $_GET['prix_plat'];
+        $id_restau = $_GET['id_restau'];
+        $type_plat = $_GET['type_plat'];
+        $modif = $bdd->prepare('INSERT INTO plats (nom_plat, prix_plat, type_plat, id_restau) VALUES (:nom_plat ,:prix_plat, :type_plat, :id_restau)');
+        $modif->bindParam(':nom_plat', $nom_plat);
+        $modif->bindParam(':prix_plat', $prix_plat);
+        $modif->bindParam(':type_plat', $type_plat);
+        $modif->bindParam(':id_restau', $id_restau);
+        $modif->execute();
+        header('Location: vueDashboardModo.php?id_restau='.$id_restau );
+    
     }
-}
 
     private function getEntree() {
         $bdd = $this->getBdd();
@@ -239,7 +240,7 @@ public function accessListeCommandes() {
 
 }
 
-public function accessAddPlat(){
+public function accessModifPlats(){
     return $this->addPlat();
 
 }

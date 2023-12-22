@@ -18,20 +18,38 @@
     <title>DASHBOARD</title>
     <link rel= "stylesheet" href="../css/styleDashboard.css">
 </head>
-<?php include_once '../gabarits/header.php'; ?>
+<?php ?>
 <body>
-    
-        <?php $modif = $db -> accessListePlats();
+<header>
+        <img src="img/logo.png" alt="" id='sans'>
+        <img src="../img/logo.png" alt="" id="avec">  
 
-        if (isset ($_POST['ok'])) {
-            $newPlat = $db-> accessModifPlats($_POST['nom_plat'], $_POST['type_plat'], $_POST['prix_plat']);
+
+        <nav>
+            <ul>
+                <li><a href="../index.php">Accueil</a></li>
+            
+                <li><a href="vueDashboard.php">Dashboard</a></li>
+                
+                <li><a href="vuePanier.php">Panier</a></li>
+                <li><a href="vueCommande.php">Commandes</a></li>
+            </ul>
+        </nav>
+    </header>
+        <?php 
+        $varPlats = $db->accessListePlats($_GET['id_restau']);
+        $but = isset($_GET['id_restau']); 
+
+        if (isset ($_GET['ok'])) {
+            $newPlat = $db-> accessModifPlats($_GET['nom_plat'], $_GET['type_plat'], $_GET['prix_plat'], $but);
             }
         echo '<div class="modif-container">';
-        echo '<form action="vueDashboardModo.php" method="post">';
+        echo '<form action="vueDashboardModo.php?name="'.$but.' method="get">';
         echo '<p> Nom du plat: ', '<input type = "text" name="nom_plat">';
         echo '<p> Type: ', '<input type = "text" name="type_plat">';
         echo '<p> Prix: ', '<input type = "number" name="prix_plat">';
-        echo '<p> <input type="submit" value="Envoyer" name="ok" ></p>';
+        echo '<input type="hidden" value="',$but,'"name="id_restau">';
+        echo '<input type="submit" value="Envoyer" name="ok" >';
         echo '</form>';
         echo '</div>';
 ?>
