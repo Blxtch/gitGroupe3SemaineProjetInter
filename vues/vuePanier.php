@@ -12,9 +12,21 @@ require_once '../db.php';
     <link rel="stylesheet" href="../css/stylePanier.css">
 </head>
 <body>
-    <?php include_once '../gabarits/header.php'; ?>
+    <header>
+        <img src="img/logo.png" alt="" id='sans'>
+        <img src="../img/logo.png" alt="" id="avec">  
+        <nav>
+            <ul>
+                <li><a href="../index.php">Accueil</a></li>               
+                <li><a href="vueDashboard.php">Dashboard</a></li>                    
+                <li><a href="vuePanier.php">Panier</a></li>
+                <li><a href="vueCommande.php">Commandes</a></li>
+            </ul>
+        </nav>
+    </header>
         <?php echo '<h1> Voici votre panier: </h1>';  ?>
         <main>
+    
             <?php 
 
             $varRestau = $db->accessListePlatsPanier();
