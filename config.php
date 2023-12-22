@@ -10,7 +10,7 @@ $configLocal = [
 
 $configLDAP = [
     'host' => '192.160.110.1',
-    'port' => 389, //PORT DE LDAP J'IMAGINE
+    'port' => 389,
     'user' => 'julien.magnier@delivISIM.lan',
     'password' => 'Test123*',
 ];
