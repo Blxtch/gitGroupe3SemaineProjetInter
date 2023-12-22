@@ -176,14 +176,10 @@ class Modele {
         return $listEntreeDessert;
     }
 
-    // public get_total(){
-
-        //fonctionne avec notre user...
+    public function getTotal() {
         $bdd = $this->getBdd();
-        $total = $Bdd ->query( 'SELECT SUM(prix_plat) FROM `panier` where id_user = 1;' );
-
-
-        return $total
+        $total = $bdd ->query( 'SELECT SUM(prix_plat) FROM panier WHERE id_user = 1;' );
+        return $total;
     }
 # Publics methods
 
@@ -226,5 +222,7 @@ public function accessEnvoiCommande() {
 
 public function accessListeCommandes() {
     return $this->getListeCommandes();
+
+}
 
 }

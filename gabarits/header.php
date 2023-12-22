@@ -10,15 +10,15 @@
             echo $_SESSION['id'];
                 if (isset($_SESSION['id'])){
                     if ($_SESSION['id'] > 0) {
-                        echo '<li><a href="vueDashboard.php">Dashboard</a></li>';
+                        echo '<li><a href="vueDashboard.php" class ="header">Dashboard</a></li>';
                     }
                     else{
                     }
                 }
              ?>
             
-            <li><a href="vuePanier.php">Panier</a></li>
-            <li><a href="vueCommande.php">Commandes</a></li>
+            <li><a href='vuePanier.php class ="header"'>Panier</a></li>
+            <li><a href='vueCommande.php class ="header"'>Commandes</a></li>
         </ul>
     </nav>
 </header>
