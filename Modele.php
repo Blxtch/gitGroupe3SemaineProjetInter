@@ -176,15 +176,16 @@ class Modele {
         return $listEntreeDessert;
     }
 
-    // public get_total(){
-
-        //fonctionne avec notre user...
-    //     $bdd = $this->getBdd();
-    //     $total = $Bdd ->query( 'SELECT SUM(prix_plat) FROM `panier` where id_user = 1;' );
-
-
-    //     return $total
-    // }
+    public function getTotal() {
+        $bdd = $this->getBdd();
+        $total = $bdd ->query( 'SELECT SUM(prix_plat) FROM panier WHERE id_user = 1;' );
+        return $total;
+    }
+    public function getTotal() {
+        $bdd = $this->getBdd();
+        $total = $bdd ->query( 'SELECT SUM(prix_plat) FROM panier WHERE id_user = 1;' );
+        return $total;
+    }
 # Publics methods
 
 // Accès BDD

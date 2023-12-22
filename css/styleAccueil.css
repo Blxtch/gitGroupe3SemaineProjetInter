@@ -9,9 +9,18 @@ header{
     margin: 0;
 }
 
-header nav ul li .header{
-    color: #fff;
+ul{
+    list-style-type: none;
+}
+
+.header{
     text-decoration: none;
+    color: #fff;
+}
+
+.header:hover{
+    text-decoration: none;
+    color: #fff;
 }
 
 header img{
