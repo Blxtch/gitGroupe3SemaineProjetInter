@@ -38,10 +38,10 @@
     </header>
         <?php 
         $varPlats = $db->accessListePlats($_GET['id_restau']);
-        $but = isset($_GET['id_restau']); 
+        $but =$_GET['id_restau'];
 
         if (isset ($_GET['ok'])) {
-            $newPlat = $db-> accessModifPlats($_GET['nom_plat'], $_GET['type_plat'], $_GET['prix_plat'], $but);
+            $newPlat = $db-> addPlat($_GET['nom_plat'], $_GET['type_plat'], $_GET['prix_plat'], $but);
             }
         echo '<div class="modif-container">';
         echo '<form action="vueDashboardModo.php?name="'.$but.' method="get">';

@@ -137,7 +137,7 @@ class Modele {
         return $varCmd;
     }
 
-    private function addPlat(){
+    public function addPlat(){
         $bdd = $this->getBdd();
         $nom_plat = $_GET['nom_plat'];
         $prix_plat = $_GET['prix_plat'];
